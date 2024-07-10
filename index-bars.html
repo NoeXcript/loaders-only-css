@@ -6,13 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bar-Loader</title>
     <style>
-        .loader-container{
+        .loader-container {
             width: 100%;
             display: flex;
             justify-content: space-between;
-            
+            align-items: start;
+            overflow: hidden;
+
         }
-        .loader {
+
+        .loader-bars {
             width: 45px;
             aspect-ratio: 1;
             --c: no-repeat linear-gradient(#000 0 0);
@@ -45,14 +48,134 @@
                 background-size: 20% 100%, 20% 100%, 20% 100%;
             }
         }
+
+        .loader-spinners {
+            width: 50px;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            border: 8px solid lightblue;
+            border-right-color: orange;
+            animation: l2 1s infinite linear;
+        }
+
+        @keyframes l2 {
+            to {
+                transform: rotate(1turn);
+            }
+        }
+
+        .loader-shapes {
+            width: 60px;
+            aspect-ratio: 1.154;
+            --c: #000, #25b09b 2deg 59deg, #0000 61deg;
+            --c1: conic-gradient(from 149deg at top, var(--c));
+            --c2: conic-gradient(from -31deg at bottom, var(--c));
+            background:
+                var(--c1) top,
+                var(--c1) bottom right,
+                var(--c2) bottom,
+                var(--c1) bottom left;
+            background-size: 50% 50%;
+            background-repeat: no-repeat;
+            animation: l37 1s infinite;
+        }
+
+        @keyframes l37 {
+
+            89%,
+            100% {
+                background-position: bottom right, bottom left, bottom, top;
+            }
+        }
+
+        .loader-progresses {
+            width: 120px;
+            height: 20px;
+            border-radius: 20px;
+            background: repeating-linear-gradient(135deg, #f03355 0 10px, #ffa516 0 20px) 0/0% no-repeat,
+                repeating-linear-gradient(135deg, #ddd 0 10px, #eee 0 20px) 0/100%;
+            animation: l3 2s infinite;
+        }
+
+        @keyframes l3 {
+            100% {
+                background-size: 100%;
+            }
+        }
+
+        .loader-squares {
+            --s: 25px;
+            --_d: calc(0.353*var(--s));
+            width: calc(var(--s) + var(--_d));
+            aspect-ratio: 1;
+            clip-path: polygon(var(--_d) 0, 100% 0, 100% calc(100% - var(--_d)), calc(100% - var(--_d)) 100%, 0 100%, 0 var(--_d));
+            background: conic-gradient(from -90deg at var(--s) var(--_d), #fff 135deg, #666 0 270deg, #aaa 0);
+            animation: l5 1s infinite cubic-bezier(0.5, 300, 0.5, -300);
+        }
+
+        @keyframes l5 {
+
+            50%,
+            100% {
+                transform: translateY(0.1px);
+            }
+        }
+
+        .loader-infinity {
+            width: calc(80px / cos(45deg));
+            height: 14px;
+            background: repeating-linear-gradient(-45deg, #000 0 15px, #0000 0 20px) left/200% 100%;
+            animation: l6 2s infinite linear;
+        }
+
+        @keyframes l6 {
+            100% {
+                background-position: right;
+            }
+        }
+
+        .loader-continuous {
+            width: 120px;
+            height: 22px;
+            border-radius: 40px;
+            color: #514b82;
+            border: 2px solid;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .loader-continuous::before {
+            content: "";
+            position: absolute;
+            margin: 2px;
+            width: 14px;
+            top: 0;
+            bottom: 0;
+            left: -20px;
+            border-radius: inherit;
+            background: currentColor;
+            box-shadow: -10px 0 12px 3px currentColor;
+            clip-path: polygon(0 5%, 100% 0, 100% 100%, 0 95%, -30px 50%);
+            animation: l14 1s infinite linear;
+        }
+
+        @keyframes l14 {
+            100% {
+                left: calc(100%+20px);
+            }
+        }
     </style>
 </head>
 
 <body>
     <div class="loader-container">
-        <div class="loader"></div>
-    
-
+        <div class="loader-bars"></div>
+        <div class="loader-spinners"></div>
+        <div class="loader-shapes"></div>
+        <div class="loader-progresses"></div>
+        <div class="loader-squares"></div>
+        <div class="loader-infinity"></div>
+        <div class="loader-continuous"></div>
     </div>
 </body>
 
