@@ -7,6 +7,8 @@
 - infinity
 - continuous
 
+![Loaders](img/loaders.png)
+
 Wrote based Linkedin POST
 
 # DevxJS 💻💻
