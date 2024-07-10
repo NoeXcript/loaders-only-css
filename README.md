@@ -6,3 +6,7 @@
 - 3D loaders
 - infinity
 - continuous
+
+Wrote based Linkedin POST
+
+# DevxJS 💻💻
